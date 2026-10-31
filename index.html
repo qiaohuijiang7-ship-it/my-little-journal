@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MY LITTLE JOURNAL｜個人記帳 Web App</title>
+  <!-- Google Fonts: Zen Maru Gothic & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/wand.svg">
+</head>
+<body class="journal-theme">
+  <!-- Background Decorative Paper Texture, Ribbons & Lace -->
+  <div class="bg-decorative-overlay" aria-hidden="true"></div>
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <div class="app-layout">
+    <!-- Desktop Sidebar Navigation -->
+    <aside class="sidebar-container" id="sidebar">
+      <div class="sidebar-lace-top"></div>
+      
+      <!-- Brand Logo & Header -->
+      <div class="brand-header">
+        <div class="brand-ribbon">
+          <img src="assets/icons/ribbon.svg" alt="Ribbon" class="ribbon-img">
+        </div>
+        <h1 class="brand-title">MY LITTLE JOURNAL</h1>
+        <p class="brand-subtitle">日系少女手帳記帳</p>
+        <div class="brand-pearl-divider">
+          <span>•</span><span>✦</span><span>•</span><span>✦</span><span>•</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu">
+        <a href="#home" class="nav-link active" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-text">手帳首頁</span>
+          <span class="nav-badge-sub">HOME</span>
+        </a>
+        <a href="#record" class="nav-link" data-page="record">
+          <span class="nav-icon">✍️</span>
+          <span class="nav-text">日常記帳</span>
+          <span class="nav-badge-sub">RECORD</span>
+        </a>
+        <a href="#recurring" class="nav-link" data-page="recurring">
+          <span class="nav-icon">🔄</span>
+          <span class="nav-text">固定分期</span>
+          <span class="nav-badge-sub">CYCLE</span>
+        </a>
+        <a href="#history" class="nav-link" data-page="history">
+          <span class="nav-icon">📖</span>
+          <span class="nav-text">手帳紀錄</span>
+          <span class="nav-badge-sub">HISTORY</span>
+        </a>
+        <a href="#statistics" class="nav-link" data-page="statistics">
+          <span class="nav-icon">📊</span>
+          <span class="nav-text">財務分析</span>
+          <span class="nav-badge-sub">STATISTICS</span>
+        </a>
+        <a href="#budget" class="nav-link" data-page="budget">
+          <span class="nav-icon">👛</span>
+          <span class="nav-text">預算管理</span>
+          <span class="nav-badge-sub">BUDGET</span>
+        </a>
+        <a href="#settings" class="nav-link" data-page="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-text">手帳設定</span>
+          <span class="nav-badge-sub">SETTINGS</span>
+        </a>
+      </nav>
+
+      <!-- Original Pixel Pet Companion Card -->
+      <div class="sidebar-pet-widget" id="pixel-pet-box" title="點擊摸摸 Momo ♡">
+        <div class="pet-speech-bubble" id="pet-speech-bubble">今天也是閃閃發光的一天呢~ ♡</div>
+        <div class="pet-character-container">
+          <img src="assets/pets/momo.svg" alt="Momo the Bunny-Cat" id="pet-avatar-img" class="pixel-pet-avatar">
+        </div>
+        <div class="pet-info-box">
+          <div class="pet-name">Momo 桃子兔 🐾</div>
+          <div class="pet-desc">陪伴小寵物・點我摸摸</div>
+        </div>
+      </div>
+
+      <div class="sidebar-lace-bottom"></div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Streamlined Top Decorative Bar -->
+      <header class="top-banner">
+        <div class="top-banner-left">
+          <div class="greeting-text">
+            <span>🌸 早安，</span><strong id="user-greeting-name">少女手帳主人</strong><span> ♡</span>
+          </div>
+          <div class="current-date-pill" id="current-date-badge">
+            2026年10月31日 星期六
+          </div>
+        </div>
+        <div class="top-banner-right">
+          <button class="journal-btn-pill header-quick-btn" id="home-quick-record-btn">
+            <span class="btn-sparkle">✨</span> 快速記一筆
+          </button>
+        </div>
+      </header>
+
+      <!-- ================= PAGE 1: HOME ================= -->
+      <section class="app-page active" id="page-home">
+        <!-- Streamlined Welcome Card -->
+        <div class="journal-card welcome-hero-card">
+          <div class="washi-tape-corner tape-tl"></div>
+          <div class="washi-tape-corner tape-tr"></div>
+          <div class="hero-content">
+            <div class="hero-text-side">
+              <span class="hero-tag">🎀 本月財務手帳概況</span>
+              <h2 class="hero-title">今天也要認真記錄美好的日常</h2>
+              <p class="hero-subtitle">細心打理每一筆花費，把生活過成喜歡的模樣 ♡</p>
+            </div>
+            <div class="hero-stamp-side">
+              <img src="assets/icons/stamp.svg" alt="Journal Stamp" class="stamp-img">
+            </div>
+          </div>
+        </div>
+
+        <!-- KPI Stat Cards Grid -->
+        <div class="kpi-grid">
+          <div class="kpi-card card-income">
+            <div class="kpi-icon-box">👛</div>
+            <div class="kpi-details">
+              <div class="kpi-label">本月收入</div>
+              <div class="kpi-value text-income" id="home-month-income">+NT$ 0</div>
+            </div>
+          </div>
+
+          <div class="kpi-card card-expense">
+            <div class="kpi-icon-box">🛍️</div>
+            <div class="kpi-details">
+              <div class="kpi-label">本月支出</div>
+              <div class="kpi-value text-expense" id="home-month-expense">-NT$ 0</div>
+            </div>
+          </div>
+
+          <div class="kpi-card card-balance">
+            <div class="kpi-icon-box">💎</div>
+            <div class="kpi-details">
+              <div class="kpi-label">目前結餘</div>
+              <div class="kpi-value text-positive" id="home-current-balance">NT$ 0</div>
+            </div>
+          </div>
+
+          <div class="kpi-card card-today">
+            <div class="kpi-icon-box">🍰</div>
+            <div class="kpi-details">
+              <div class="kpi-label">今日支出</div>
+              <div class="kpi-value" id="home-today-expense">NT$ 0</div>
+            </div>
+          </div>
+
+          <div class="kpi-card card-budget-mini">
+            <div class="kpi-icon-box">🎯</div>
+            <div class="kpi-details">
+              <div class="kpi-label-row">
+                <span class="kpi-label">本月預算使用率</span>
+                <span class="kpi-badge" id="home-budget-percent">0%</span>
+              </div>
+              <div class="budget-mini-bar-bg">
+                <div class="budget-mini-bar-fill" id="home-budget-bar" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="home-charts-row">
+          <div class="journal-card chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">📊</span>
+                <h3 class="card-title">本月收支概況</h3>
+              </div>
+              <span class="card-tag">Monthly Overview</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="home-chart-summary"></canvas>
+            </div>
+          </div>
+
+          <div class="journal-card chart-card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">🍰</span>
+                <h3 class="card-title">本月消費分類佔比</h3>
+              </div>
+              <span class="card-tag">Category Share</span>
+            </div>
+            <div class="chart-container">
+              <canvas id="home-chart-category"></canvas>
+              <div class="chart-empty-msg" id="home-cat-empty">
+                <div class="empty-icon">🍰</div>
+                <p>本月尚無支出紀錄</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Transactions Preview -->
+        <div class="journal-card recent-records-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-icon">🎀</span>
+              <h3 class="card-title">最近手帳紀錄</h3>
+            </div>
+            <button class="card-link-btn" onclick="window.App.navigateTo('history')">查看全部紀錄 →</button>
+          </div>
+          <div class="recent-list-container" id="home-recent-list">
+            <!-- Dynamically injected -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 2: RECORD ================= -->
+      <section class="app-page" id="page-record">
+        <div class="journal-card record-form-card">
+          <div class="lace-trim-header">
+            <div class="lace-dots"></div>
+          </div>
+          <div class="washi-tape-corner tape-tl"></div>
+          <div class="washi-tape-corner tape-tr"></div>
+
+          <div class="form-header-area">
+            <img src="assets/icons/ribbon.svg" alt="Bow" class="form-header-bow">
+            <h2 class="page-title" id="record-form-title">✨ 新增記帳紀錄</h2>
+            <p class="page-subtitle">填寫今日收支，讓每一分錢都有溫柔的去處</p>
+          </div>
+
+          <form id="record-form" class="journal-form">
+            <!-- Type Switcher (Expense / Income) -->
+            <div class="form-group type-switch-group">
+              <div class="type-pill-container">
+                <button type="button" class="type-pill-btn active" id="type-expense-btn">
+                  🛍️ 支出 EXPENSE
+                </button>
+                <button type="button" class="type-pill-btn" id="type-income-btn">
+                  👛 收入 INCOME
+                </button>
+              </div>
+            </div>
+
+            <!-- Amount Input -->
+            <div class="form-group amount-group">
+              <label for="record-amount" class="form-label">
+                <span class="label-star">✦</span> 金額 AMOUNT
+              </label>
+              <div class="amount-input-box">
+                <span class="currency-prefix" id="amount-currency-symbol">NT$</span>
+                <input type="number" id="record-amount" class="amount-field" placeholder="0" min="0.01" step="any" required>
+              </div>
+              <!-- Quick Amount Pills -->
+              <div class="quick-amounts-row">
+                <button type="button" class="quick-amount-btn" data-amount="50">+50</button>
+                <button type="button" class="quick-amount-btn" data-amount="100">+100</button>
+                <button type="button" class="quick-amount-btn" data-amount="500">+500</button>
+                <button type="button" class="quick-amount-btn" data-amount="1000">+1000</button>
+              </div>
+            </div>
+
+            <!-- Date Input -->
+            <div class="form-group">
+              <label for="record-date" class="form-label">
+                <span class="label-star">✦</span> 日期 DATE
+              </label>
+              <input type="date" id="record-date" class="journal-input" required>
+            </div>
+
+            <!-- Category Selection -->
+            <div class="form-group">
+              <label class="form-label">
+                <span class="label-star">✦</span> 選擇分類 CATEGORY
+              </label>
+              <div class="category-grid-container" id="category-grid">
+                <!-- Dynamically rendered -->
+              </div>
+            </div>
+
+            <!-- Note / Description -->
+            <div class="form-group">
+              <label for="record-note" class="form-label">
+                <span class="label-star">✦</span> 備註說明 NOTE
+              </label>
+              <input type="text" id="record-note" class="journal-input" placeholder="例如：草莓千層蛋糕、香氛噴霧、悠遊卡儲值..." maxlength="60">
+              <!-- Quick Tags -->
+              <div class="quick-tags-row">
+                <span class="quick-tags-title">常用標籤：</span>
+                <button type="button" class="quick-tag-chip" data-tag="草莓蛋糕 🍰">草莓蛋糕 🍰</button>
+                <button type="button" class="quick-tag-chip" data-tag="手搖飲 🧋">手搖飲 🧋</button>
+                <button type="button" class="quick-tag-chip" data-tag="超商 🏪">超商 🏪</button>
+                <button type="button" class="quick-tag-chip" data-tag="捷運通勤 🚃">捷運通勤 🚃</button>
+                <button type="button" class="quick-tag-chip" data-tag="Lolita 洋裝 👗">洋裝 👗</button>
+                <button type="button" class="quick-tag-chip" data-tag="文具貼紙 📚">文具 📚</button>
+                <button type="button" class="quick-tag-chip" data-tag="美妝香氛 💄">美妝 💄</button>
+              </div>
+            </div>
+
+            <!-- Submit & Action Buttons -->
+            <div class="form-actions-row">
+              <button type="submit" class="journal-btn-primary" id="record-submit-btn">
+                <span class="btn-wand-icon">🪄</span> 保存到手帳
+              </button>
+              <button type="button" class="journal-btn-secondary" id="cancel-edit-btn" style="display: none;">
+                取消編輯
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 3: RECURRING & INSTALLMENTS ================= -->
+      <section class="app-page" id="page-recurring">
+        <div class="recurring-header-row">
+          <div>
+            <h2 class="page-title">🔄 固定收支與分期管理</h2>
+            <p class="page-subtitle">支援每月、雙月、每季、每半年與商品多期分期自動記帳 ♡</p>
+          </div>
+          <button class="journal-btn-primary" id="btn-add-recurring">
+            ✨ 新增固定 / 分期項目
+          </button>
+        </div>
+
+        <div class="journal-card recurring-intro-card">
+          <div class="hero-content">
+            <div class="hero-text-side">
+              <span class="hero-tag">💡 自動記帳小幫手</span>
+              <p class="hero-subtitle">設定固定週期後，系統在指定扣款日會自動寫入手帳並推算分期進度，不必再擔心忘記記水電、房租或分期信用卡帳單！</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recurring Rules List -->
+        <div class="recurring-rules-grid" id="recurring-rules-list">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- ================= PAGE 4: HISTORY ================= -->
+      <section class="app-page" id="page-history">
+        <!-- Monthly Summary Banner -->
+        <div class="history-summary-banner">
+          <div class="summary-pill">
+            <span class="pill-label">本期收入</span>
+            <span class="pill-value text-income" id="history-summary-income">+NT$ 0</span>
+          </div>
+          <div class="summary-pill">
+            <span class="pill-label">本期支出</span>
+            <span class="pill-value text-expense" id="history-summary-expense">-NT$ 0</span>
+          </div>
+          <div class="summary-pill">
+            <span class="pill-label">本期結餘</span>
+            <span class="pill-value" id="history-summary-balance">NT$ 0</span>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="journal-card filter-toolbar-card">
+          <div class="filter-controls-row">
+            <div class="filter-item">
+              <label for="history-month-select" class="filter-label">📅 月份篩選</label>
+              <select id="history-month-select" class="journal-select"></select>
+            </div>
+
+            <div class="filter-item">
+              <label for="history-type-select" class="filter-label">🌸 收支類型</label>
+              <select id="history-type-select" class="journal-select">
+                <option value="all">全部收支</option>
+                <option value="expense">只看支出</option>
+                <option value="income">只看收入</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <label for="history-category-select" class="filter-label">🏷️ 分類篩選</label>
+              <select id="history-category-select" class="journal-select">
+                <option value="all">全部分類</option>
+              </select>
+            </div>
+
+            <div class="filter-item">
+              <label for="history-sort-select" class="filter-label">⇅ 排序方式</label>
+              <select id="history-sort-select" class="journal-select">
+                <option value="date-desc">日期：新 → 舊</option>
+                <option value="date-asc">日期：舊 → 新</option>
+                <option value="amount-desc">金額：大 → 小</option>
+                <option value="amount-asc">金額：小 → 大</option>
+              </select>
+            </div>
+
+            <div class="filter-item filter-search-box">
+              <label for="history-search-input" class="filter-label">🔍 搜尋備註</label>
+              <input type="text" id="history-search-input" class="journal-input" placeholder="搜尋手帳備註關鍵字...">
+            </div>
+          </div>
+        </div>
+
+        <!-- History Records Group List -->
+        <div class="history-list-wrapper" id="history-records-list">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+      <!-- ================= PAGE 5: STATISTICS ================= -->
+      <section class="app-page" id="page-statistics">
+        <!-- Month Selector Header -->
+        <div class="stats-header-bar">
+          <div class="stats-title-side">
+            <h2 class="page-title">📊 財務手帳分析</h2>
+            <p class="page-subtitle">洞察消費足跡，發現專屬於你的生活比例</p>
+          </div>
+          <div class="stats-month-picker">
+            <label for="stats-month-select" class="picker-label">分析月份：</label>
+            <select id="stats-month-select" class="journal-select"></select>
+          </div>
+        </div>
+
+        <!-- Highlight Insights Cards -->
+        <div class="stats-highlights-grid">
+          <div class="highlight-card">
+            <div class="highlight-icon">📈</div>
+            <div class="highlight-title">與上月支出比較</div>
+            <div id="stat-mom-comparison" class="highlight-body">
+              <div class="stat-highlight-val">—</div>
+              <div class="stat-highlight-sub">計算中</div>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">👑</div>
+            <div class="highlight-title">本月最高支出分類</div>
+            <div id="stat-top-category" class="highlight-body">
+              <div class="stat-highlight-val">—</div>
+              <div class="stat-highlight-sub">無支出</div>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">📅</div>
+            <div class="highlight-title">本月最高消費日</div>
+            <div id="stat-peak-day" class="highlight-body">
+              <div class="stat-highlight-val">—</div>
+              <div class="stat-highlight-sub">無消費日</div>
+            </div>
+          </div>
+
+          <div class="highlight-card">
+            <div class="highlight-icon">☕</div>
+            <div class="highlight-title">每日平均支出</div>
+            <div id="stat-daily-avg" class="highlight-body">
+              <div class="stat-highlight-val">NT$ 0</div>
+              <div class="stat-highlight-sub">依當月天數平均</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 1: Donut & Daily Bars -->
+        <div class="stats-charts-row">
+          <div class="journal-card chart-card-large">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">🍰</span>
+                <h3 class="card-title">本月消費分類分佈</h3>
+              </div>
+              <span class="card-tag">Category Distribution</span>
+            </div>
+            <div class="chart-container large">
+              <canvas id="chart-category-pie"></canvas>
+              <div class="chart-empty-msg" id="pie-empty-state">
+                <div class="empty-icon">🍰</div>
+                <p>本月尚無支出紀錄</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="journal-card chart-card-large">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">📊</span>
+                <h3 class="card-title">每日支出變化長條圖</h3>
+              </div>
+              <span class="card-tag">Daily Timeline</span>
+            </div>
+            <div class="chart-container large">
+              <canvas id="chart-daily-bars"></canvas>
+              <div class="chart-empty-msg" id="daily-empty-state">
+                <div class="empty-icon">📅</div>
+                <p>本月尚無每日支出紀錄</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Charts Grid 2: Monthly Compare & Trend -->
+        <div class="stats-charts-row">
+          <div class="journal-card chart-card-large">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">🌸</span>
+                <h3 class="card-title">近幾個月收支對比</h3>
+              </div>
+              <span class="card-tag">Income vs Expense</span>
+            </div>
+            <div class="chart-container large">
+              <canvas id="chart-monthly-compare"></canvas>
+            </div>
+          </div>
+
+          <div class="journal-card chart-card-large">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="card-icon">📈</span>
+                <h3 class="card-title">每月支出趨勢折線圖</h3>
+              </div>
+              <span class="card-tag">Expense Trend</span>
+            </div>
+            <div class="chart-container large">
+              <canvas id="chart-monthly-trend"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Category Spending Ranking List -->
+        <div class="journal-card ranking-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-icon">🎀</span>
+              <h3 class="card-title">本月各分類消費排行榜</h3>
+            </div>
+            <span class="card-tag">Spending Rank</span>
+          </div>
+          <div class="ranking-list-container" id="stats-ranking-list">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 6: BUDGET ================= -->
+      <section class="app-page" id="page-budget">
+        <div class="budget-header-row">
+          <div>
+            <h2 class="page-title">👛 每月預算管理</h2>
+            <p class="page-subtitle">設定消費界線，溫柔陪伴你的每一筆計畫</p>
+          </div>
+          <button class="journal-btn-primary" id="edit-budget-btn">
+            ✏️ 設定預算金額
+          </button>
+        </div>
+
+        <!-- Monthly Total Budget Card -->
+        <div class="journal-card budget-hero-card">
+          <div class="washi-tape-corner tape-tl"></div>
+          <div class="washi-tape-corner tape-tr"></div>
+
+          <div class="budget-hero-top">
+            <div class="budget-main-stat">
+              <span class="budget-stat-label">本月總預算上限</span>
+              <div class="budget-stat-amount" id="budget-total-val">NT$ 25,000</div>
+            </div>
+            <div class="budget-usage-badge" id="budget-percent-badge">0%</div>
+          </div>
+
+          <!-- Cute Progress Bar -->
+          <div class="budget-progress-track">
+            <div class="budget-progress-fill" id="budget-progress-fill" style="width: 0%"></div>
+          </div>
+
+          <div class="budget-stat-sub-row">
+            <div class="sub-stat-item">
+              <span class="sub-label">已使用金額：</span>
+              <strong id="budget-spent-val">NT$ 0</strong>
+            </div>
+            <div class="sub-stat-item">
+              <span class="sub-label">剩餘可用額度：</span>
+              <strong id="budget-remaining-val" class="stat-num text-positive">NT$ 25,000</strong>
+            </div>
+          </div>
+
+          <!-- Gentle Warning Alert Banner -->
+          <div class="budget-alert-card" id="budget-alert-banner">
+            <!-- Injected by budget.js -->
+          </div>
+        </div>
+
+        <!-- Category Budgets Grid -->
+        <div class="category-budgets-section">
+          <div class="section-title-row">
+            <h3 class="section-title">🏷️ 各分類預算進度</h3>
+            <span class="section-subtitle">點擊上方「設定預算金額」可自訂各分類上限</span>
+          </div>
+          <div class="category-budgets-grid" id="category-budget-list">
+            <!-- Injected by budget.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= PAGE 7: SETTINGS ================= -->
+      <section class="app-page" id="page-settings">
+        <div class="journal-card settings-card">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="card-icon">⚙️</span>
+              <h3 class="card-title">手帳設定與資料備份</h3>
+            </div>
+          </div>
+
+          <form id="settings-form" class="settings-form-layout">
+            <div class="settings-section">
+              <h4 class="settings-section-title">🌸 個人風格偏好</h4>
+              
+              <div class="form-group">
+                <label for="settings-nickname" class="form-label">手帳主人暱稱</label>
+                <input type="text" id="settings-nickname" class="journal-input" value="少女手帳主人">
+              </div>
+
+              <div class="form-group">
+                <label for="settings-currency" class="form-label">貨幣單位符號</label>
+                <input type="text" id="settings-currency" class="journal-input" value="NT$" placeholder="例如：NT$, ¥, $, €">
+              </div>
+
+              <div class="form-group">
+                <label for="settings-budget-total" class="form-label">每月預設總預算</label>
+                <input type="number" id="settings-budget-total" class="journal-input" min="0" step="100" value="25000">
+              </div>
+            </div>
+
+            <div class="settings-section">
+              <h4 class="settings-section-title">🪄 魔法音效與動畫</h4>
+
+              <div class="settings-switch-row">
+                <div class="switch-info">
+                  <strong>點擊水晶音效</strong>
+                  <p>開啟/關閉輕柔的星星與小鈴鐺點擊音效</p>
+                </div>
+                <label class="switch-toggle">
+                  <input type="checkbox" id="settings-sound-toggle" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+
+              <div class="settings-switch-row">
+                <div class="switch-info">
+                  <strong>魔法棒粒子與星光特效</strong>
+                  <p>開啟/關閉游標星星軌跡與點擊爆發特效</p>
+                </div>
+                <label class="switch-toggle">
+                  <input type="checkbox" id="settings-anim-toggle" checked>
+                  <span class="slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-actions-row">
+              <button type="submit" class="journal-btn-primary">
+                💾 儲存基本設定
+              </button>
+            </div>
+          </form>
+
+          <hr class="pearl-divider-line">
+
+          <div class="settings-section data-management-section">
+            <h4 class="settings-section-title">📦 手帳資料備份與還原</h4>
+            <p class="settings-desc">手帳所有紀錄皆儲存在您的瀏覽器本機端 (LocalStorage)，可隨時匯出備份 JSON 檔案，或從其他裝置匯入。</p>
+
+            <div class="data-btn-grid">
+              <button type="button" class="data-action-btn export-btn" id="btn-export-json">
+                <span class="btn-icon">📤</span>
+                <div class="btn-text">
+                  <strong>匯出手帳備份 (JSON)</strong>
+                  <span>下載完整手帳資料檔案到電腦</span>
+                </div>
+              </button>
+
+              <button type="button" class="data-action-btn import-btn" id="btn-import-json">
+                <span class="btn-icon">📥</span>
+                <div class="btn-text">
+                  <strong>匯入手帳備份 (JSON)</strong>
+                  <span>從已儲存的備份檔還原紀錄</span>
+                </div>
+              </button>
+              <input type="file" id="import-file-input" accept=".json" style="display: none;">
+
+              <button type="button" class="data-action-btn sample-btn" id="btn-load-sample">
+                <span class="btn-icon">🧁</span>
+                <div class="btn-text">
+                  <strong>載入示範手帳資料</strong>
+                  <span>立即體驗充滿甜點、分期、洋裝與薪資的完整手帳</span>
+                </div>
+              </button>
+
+              <button type="button" class="data-action-btn danger-btn" id="btn-clear-data">
+                <span class="btn-icon">🗑️</span>
+                <div class="btn-text">
+                  <strong>清除所有手帳紀錄</strong>
+                  <span>重置為全新空白狀態 (二次確認防呆)</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Mobile Bottom Navigation Bar (7 Tabs) -->
+  <nav class="mobile-bottom-nav">
+    <a href="#home" class="mobile-nav-item nav-link active" data-page="home">
+      <span class="mobile-nav-icon">🏠</span>
+      <span class="mobile-nav-label">首頁</span>
+    </a>
+    <a href="#record" class="mobile-nav-item nav-link" data-page="record">
+      <span class="mobile-nav-icon">✍️</span>
+      <span class="mobile-nav-label">記帳</span>
+    </a>
+    <a href="#recurring" class="mobile-nav-item nav-link" data-page="recurring">
+      <span class="mobile-nav-icon">🔄</span>
+      <span class="mobile-nav-label">固定</span>
+    </a>
+    <a href="#history" class="mobile-nav-item nav-link" data-page="history">
+      <span class="mobile-nav-icon">📖</span>
+      <span class="mobile-nav-label">明細</span>
+    </a>
+    <a href="#statistics" class="mobile-nav-item nav-link" data-page="statistics">
+      <span class="mobile-nav-icon">📊</span>
+      <span class="mobile-nav-label">分析</span>
+    </a>
+    <a href="#budget" class="mobile-nav-item nav-link" data-page="budget">
+      <span class="mobile-nav-icon">👛</span>
+      <span class="mobile-nav-label">預算</span>
+    </a>
+    <a href="#settings" class="mobile-nav-item nav-link" data-page="settings">
+      <span class="mobile-nav-icon">⚙️</span>
+      <span class="mobile-nav-label">設定</span>
+    </a>
+  </nav>
+
+  <!-- Budget Edit Modal Dialog -->
+  <div class="modal-backdrop" id="budget-modal">
+    <div class="modal-card">
+      <div class="washi-tape-corner tape-tl"></div>
+      <div class="washi-tape-corner tape-tr"></div>
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="modal-icon">👛</span>
+          <h3 class="modal-title">設定每月預算上限</h3>
+        </div>
+        <button class="modal-close-btn" id="close-budget-modal" aria-label="關閉">✕</button>
+      </div>
+      <form id="budget-form" class="modal-body">
+        <div class="form-group">
+          <label for="modal-budget-total" class="form-label">
+            <span class="label-star">✦</span> 每月總預算上限
+          </label>
+          <input type="number" id="modal-budget-total" class="journal-input" min="0" step="100" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">
+            <span class="label-star">✦</span> 各分類獨立預算 (選填)
+          </label>
+          <p class="form-hint">留空或填 0 表示不設特定上限</p>
+          <div class="category-budgets-input-list" id="modal-category-budgets">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="journal-btn-primary">
+            💾 儲存預算設定
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Recurring & Installments Modal Dialog -->
+  <div class="modal-backdrop" id="recurring-modal">
+    <div class="modal-card">
+      <div class="washi-tape-corner tape-tl"></div>
+      <div class="washi-tape-corner tape-tr"></div>
+      <div class="modal-header">
+        <div class="modal-title-box">
+          <span class="modal-icon">🔄</span>
+          <h3 class="modal-title" id="recurring-modal-title">✨ 新增固定收支 / 分期設定</h3>
+        </div>
+        <button class="modal-close-btn" id="close-recurring-modal" aria-label="關閉">✕</button>
+      </div>
+      <form id="recurring-form" class="modal-body journal-form">
+        <div class="form-group">
+          <label for="recur-title" class="form-label">
+            <span class="label-star">✦</span> 項目名稱
+          </label>
+          <input type="text" id="recur-title" class="journal-input" placeholder="例如：iPhone 16 分期、套房房租、水電費、薪資入帳..." required>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="recur-type" class="form-label">收支類型</label>
+            <select id="recur-type" class="journal-select">
+              <option value="expense">🛍️ 支出 EXPENSE</option>
+              <option value="income">👛 收入 INCOME</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="recur-amount" class="form-label">每期金額</label>
+            <input type="number" id="recur-amount" class="journal-input" min="1" step="any" placeholder="0" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="recur-category" class="form-label">分類</label>
+            <select id="recur-category" class="journal-select">
+              <!-- Dynamically populated -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="recur-cycle" class="form-label">執行週期</label>
+            <select id="recur-cycle" class="journal-select">
+              <option value="monthly">每月一次 (最常用)</option>
+              <option value="2months">雙月一次 (每 2 個月)</option>
+              <option value="quarterly">每季一次 (每 3 個月)</option>
+              <option value="semiannual">每半年一次 (每 6 個月)</option>
+              <option value="yearly">每年一次 (年繳保費等)</option>
+              <option value="weekly">每週一次</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recur-dueday" class="form-label">
+            <span class="label-star">✦</span> 每期扣款 / 入帳日 (每月幾號)
+          </label>
+          <input type="number" id="recur-dueday" class="journal-input" min="1" max="31" value="5" required>
+          <span class="form-hint">例如填 5 表示每月 5 號扣款；到期當天開啟手帳將自動入帳！</span>
+        </div>
+
+        <!-- Installment Option -->
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="recur-is-installment">
+            <span>🛍️ 這是商品「分期付款」(可設定總期數與進度)</span>
+          </label>
+        </div>
+
+        <div class="form-row-2" id="installment-inputs-box" style="display: none;">
+          <div class="form-group">
+            <label for="recur-total-periods" class="form-label">分期總期數</label>
+            <input type="number" id="recur-total-periods" class="journal-input" min="1" max="120" placeholder="例如：12 或 24">
+          </div>
+          <div class="form-group">
+            <label for="recur-current-period" class="form-label">已繳期數 (起點)</label>
+            <input type="number" id="recur-current-period" class="journal-input" min="0" value="0">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="recur-note" class="form-label">備註說明 (選填)</label>
+          <input type="text" id="recur-note" class="journal-input" placeholder="例如：台哥大0利率、信用卡自動轉帳...">
+        </div>
+
+        <div class="modal-footer">
+          <button type="submit" class="journal-btn-primary" id="btn-save-recurring">
+            💾 儲存固定收支設定
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/chart.umd.min.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/cursor.js"></script>
+  <script src="js/pet.js"></script>
+  <script src="js/records.js"></script>
+  <script src="js/recurring.js"></script>
+  <script src="js/statistics.js"></script>
+  <script src="js/budget.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
