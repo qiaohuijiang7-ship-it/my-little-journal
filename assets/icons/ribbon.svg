@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="30" viewBox="0 0 60 30" fill="none">
+  <!-- Sweet Lolita / Ryousangata Ribbon Bow -->
+  <g filter="drop-shadow(0px 2px 3px rgba(140, 113, 135, 0.2))">
+    <!-- Left Ribbon Loop -->
+    <path d="M30 15 C 22 5, 8 6, 8 13 C 8 20, 20 20, 30 16 Z" fill="#F4B8CD" stroke="#DCA0B5" stroke-width="1.2"/>
+    <path d="M26 14 C 20 9, 13 10, 13 13 C 13 16, 20 16, 26 15" fill="#EBCAD9" opacity="0.6"/>
+    
+    <!-- Right Ribbon Loop -->
+    <path d="M30 15 C 38 5, 52 6, 52 13 C 52 20, 40 20, 30 16 Z" fill="#F4B8CD" stroke="#DCA0B5" stroke-width="1.2"/>
+    <path d="M34 14 C 40 9, 47 10, 47 13 C 47 16, 40 16, 34 15" fill="#EBCAD9" opacity="0.6"/>
+
+    <!-- Left Ribbon Tail -->
+    <path d="M28 17 C 24 22, 18 26, 12 28 C 17 25, 20 22, 26 18 Z" fill="#E89FBA" stroke="#DCA0B5" stroke-width="0.8"/>
+    <!-- Right Ribbon Tail -->
+    <path d="M32 17 C 36 22, 42 26, 48 28 C 43 25, 40 22, 34 18 Z" fill="#E89FBA" stroke="#DCA0B5" stroke-width="0.8"/>
+
+    <!-- Center Knot / Pearl -->
+    <circle cx="30" cy="15" r="4.5" fill="#FFFFFF" stroke="#D8C5E8" stroke-width="1.5"/>
+    <circle cx="30" cy="15" r="3.2" fill="#FFF9F4"/>
+    <circle cx="28.8" cy="13.8" r="1.2" fill="#FFFFFF"/>
+  </g>
+</svg>

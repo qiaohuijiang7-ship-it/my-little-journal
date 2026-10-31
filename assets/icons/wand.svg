@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- Magic Wand Cursor with hotspot at top-left (3, 3) -->
+  <!-- Top Star Glow -->
+  <circle cx="9" cy="9" r="6" fill="#FDE2E4" opacity="0.6"/>
+  <!-- Top Star -->
+  <path d="M9 2L11 7L16 9L11 11L9 16L7 11L2 9L7 7Z" fill="#FFF275" stroke="#E5A93C" stroke-width="1" stroke-linejoin="round"/>
+  <circle cx="9" cy="9" r="2.2" fill="#FFFFFF"/>
+  <circle cx="8.5" cy="8.5" r="0.8" fill="#FFF275"/>
+
+  <!-- Tiny Pink Ribbon underneath Star -->
+  <!-- Left loop -->
+  <path d="M7 11C5 10 4 12 6 13C7 13.5 8 12.5 8.5 12" fill="#F4B8CD" stroke="#D1839C" stroke-width="0.6"/>
+  <!-- Right loop -->
+  <path d="M11 11C13 10 14 12 12 13C11 13.5 10 12.5 9.5 12" fill="#F4B8CD" stroke="#D1839C" stroke-width="0.6"/>
+  <!-- Center pearl -->
+  <circle cx="9" cy="11.5" r="1.2" fill="#FFFFFF" stroke="#D8C5E8" stroke-width="0.5"/>
+
+  <!-- Wand Stick (diagonal pointing bottom-right) -->
+  <!-- Pastel Lavender and Dusty Pink shaft -->
+  <line x1="9" y1="12.5" x2="25" y2="28.5" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round"/>
+  <line x1="9.5" y1="13" x2="24.5" y2="28" stroke="#D8C5E8" stroke-width="2" stroke-linecap="round"/>
+  <!-- Pink handle segment -->
+  <line x1="17" y1="20.5" x2="24" y2="27.5" stroke="#F6EAF0" stroke-width="2.4" stroke-linecap="round"/>
+  <line x1="17.5" y1="21" x2="23.5" y2="27" stroke="#EBCAD9" stroke-width="1.6" stroke-linecap="round"/>
+  <!-- Wand bottom pearl pommel -->
+  <circle cx="26" cy="29" r="2" fill="#FFFFFF" stroke="#D8C5E8" stroke-width="0.8"/>
+  <circle cx="25.5" cy="28.5" r="0.8" fill="#F4B8CD"/>
+
+  <!-- Tiny sparkle dots -->
+  <circle cx="3" cy="3" r="1" fill="#FFF490"/>
+  <circle cx="16" cy="4" r="0.8" fill="#FFF490"/>
+  <circle cx="4" cy="15" r="0.8" fill="#FFF490"/>
+</svg>

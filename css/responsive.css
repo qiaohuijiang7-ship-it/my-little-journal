@@ -1,0 +1,277 @@
+/* ==========================================================================
+   MY LITTLE JOURNAL - Responsive Styles
+   Mobile First & Tablet Adaptation
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .kpi-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .home-charts-row {
+    grid-template-columns: 1fr;
+  }
+  .stats-charts-row {
+    grid-template-columns: 1fr;
+  }
+  .category-budgets-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .filter-controls-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .recurring-rules-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 860px) {
+  /* Hide Desktop Sidebar */
+  .sidebar-container {
+    display: none;
+  }
+
+  /* Expand Main Content with minimal top spacing */
+  .main-content {
+    width: 100%;
+    padding: 6px 10px 72px; /* Ultra-minimal top spacing */
+  }
+
+  /* Top Banner Mobile Layout: Compact Single-Line */
+  .top-banner {
+    display: flex;
+    flex-direction: row; /* Keep horizontal */
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    gap: 6px;
+  }
+
+  .top-banner-left {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .greeting-text {
+    font-size: 0.88rem;
+  }
+
+  .current-date-pill {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+  }
+
+  .top-banner-right {
+    width: auto;
+  }
+
+  .header-quick-btn {
+    padding: 4px 10px;
+    font-size: 0.72rem;
+  }
+
+  /* Mobile Bottom Navigation Bar */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+    background: rgba(255, 253, 251, 0.96);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-top: 1.5px dashed var(--lace-border);
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: 0 -3px 16px rgba(140, 113, 135, 0.1);
+    padding: 0 2px;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--dusty-purple);
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 4px 6px;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+    flex: 1;
+  }
+
+  .mobile-nav-icon {
+    font-size: 1.15rem;
+    margin-bottom: 1px;
+    transition: transform var(--transition-bounce);
+  }
+
+  .mobile-nav-item.active {
+    color: #5A3554;
+    font-weight: 700;
+    background: var(--bg-pink-light);
+  }
+
+  .mobile-nav-item.active .mobile-nav-icon {
+    transform: scale(1.15);
+  }
+
+  /* Mobile Grid Adjustments */
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .kpi-card:last-child {
+    grid-column: span 2;
+  }
+
+  .kpi-card {
+    padding: 8px 10px;
+    gap: 6px;
+  }
+
+  .kpi-icon-box {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+
+  .welcome-hero-card {
+    padding: 6px 12px;
+    margin-bottom: 6px;
+  }
+
+  .hero-content {
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .hero-text-side {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .hero-title {
+    font-size: 0.85rem;
+  }
+
+  .hero-subtitle {
+    display: none; /* Hide verbose subtitle on mobile so Dashboard is front and center */
+  }
+
+  .stamp-img {
+    width: 26px;
+    height: 26px;
+  }
+
+  .category-grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .category-budgets-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-highlights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .history-summary-banner {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+
+  .filter-controls-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .data-btn-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-budgets-input-list {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .journal-toast {
+    left: 14px;
+    right: 14px;
+    top: 10px;
+    text-align: center;
+    font-size: 0.78rem;
+  }
+
+  /* Adjust cursor for mobile touch */
+  body, button, a, input, select {
+    cursor: auto !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .kpi-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpi-card:last-child {
+    grid-column: span 1;
+  }
+
+  .category-grid-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .record-form-card {
+    padding: 14px 16px;
+  }
+
+  .stats-highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .budget-stat-amount {
+    font-size: 1.35rem;
+  }
+
+  .budget-hero-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .budget-stat-sub-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .stats-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .stats-month-picker {
+    width: 100%;
+  }
+
+  .stats-month-picker .journal-select {
+    flex-grow: 1;
+  }
+}

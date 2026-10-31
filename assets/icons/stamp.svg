@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+  <!-- Vintage Journal Postage Stamp / Seal -->
+  <g opacity="0.85">
+    <circle cx="32" cy="32" r="28" stroke="#8C7187" stroke-width="2" stroke-dasharray="3 3"/>
+    <circle cx="32" cy="32" r="24" stroke="#8C7187" stroke-width="1"/>
+    <!-- Stamp Star / Heart in Center -->
+    <path d="M32 20 L35 27 L42 27 L36 32 L38 39 L32 35 L26 39 L28 32 L22 27 L29 27 Z" fill="#EBCAD9" stroke="#8C7187" stroke-width="1"/>
+    <text x="32" y="47" font-size="6.5" font-family="'Zen Maru Gothic', sans-serif" font-weight="bold" fill="#8C7187" text-anchor="middle" letter-spacing="1.5">MY JOURNAL</text>
+    <text x="32" y="16" font-size="5" font-family="sans-serif" font-weight="bold" fill="#8C7187" text-anchor="middle" letter-spacing="1">★ APPROVED ★</text>
+  </g>
+</svg>
